@@ -4,17 +4,23 @@ import os
 
 load_dotenv()
 
-user = os.getenv("user")
-password = os.getenv("password")
-host = os.getenv("host")
-database = os.getenv("database")
+while False: #Cambiar a True para que se ejecute el while
+    try:
+        user = os.getenv("user")
+        password = os.getenv("password")
+        host = os.getenv("host")
+        database = os.getenv("database")
 
-DATABASE_CONNECTION_URI = f'mysql+pymysql://{user}:{password}@{host}/{database}'
-print(DATABASE_CONNECTION_URI)
+        DATABASE_CONNECTION_URI = f'mysql+pymysql://{user}:{password}@{host}/{database}'
+        print(DATABASE_CONNECTION_URI)
 
-engine = create_engine(DATABASE_CONNECTION_URI, echo=True)
+        engine = create_engine(DATABASE_CONNECTION_URI, echo=True)
 
 
-meta = MetaData()
+        meta = MetaData()
 
-db = engine.connect()
+        db = engine.connect()
+        break
+    except:
+        pass
+
